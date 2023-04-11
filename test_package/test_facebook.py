@@ -12,6 +12,7 @@ def test_run(playwright: Playwright) -> None:
     page.get_by_test_id("royal_email").press("Tab")
     page.get_by_test_id("royal_pass").fill("damn")
     page.get_by_test_id("royal_login_button").click()
+    expect(page.locator("id=login_link")).to_be_visible()
     print("Done")
 
     # ---------------------
@@ -19,5 +20,5 @@ def test_run(playwright: Playwright) -> None:
     browser.close()
 
 
-with sync_playwright() as playwright:
-    test_run(playwright)
+# with sync_playwright() as playwright:
+#     test_run(playwright)
